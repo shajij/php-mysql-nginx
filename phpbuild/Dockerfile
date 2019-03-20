@@ -1,9 +1,6 @@
-FROM php:7.1-fpm-alpine
-MAINTAINER Manuel Manhart
-VOLUME /code
-#WORKDIR /code
-RUN   apk update \                                                                                                                                                                                                                        
-  &&   apk add ca-certificates wget \                                                                                                                                                                                                      
-  &&   update-ca-certificates
-RUN docker-php-ext-install mysqli && \
-    docker-php-ext-install pdo_mysql
+FROM php:7.1-fpm-alpine 
+COPY cert/. /usr/local/share/ca-certificates/
+RUN update-ca-certificates 
+RUN apk update; \
+    apk upgrade;
+RUN docker-php-ext-install mysqli

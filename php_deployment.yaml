@@ -22,7 +22,8 @@ spec:
           claimName: code
       containers:
       - name: php
-        image: docker.io/sjmax/php-7.1-fpm-alpine
+#       image: docker.io/sjmax/php-7.1-fpm-alpine
+        image: sjmax/php-7.1-fpm
         volumeMounts:
         - name: code
           mountPath: /code

@@ -1,87 +1,70 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: mysql-pv-volume
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data"
+---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: database
-  labels:
-    "heptio.com/example": lamp
+  name: mysql-pv-claim
 spec:
+  storageClassName: manual
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi
-
+      storage: 20Gi
 ---
-# deploy the MySQL server container
-
-apiVersion: extensions/v1beta1
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+spec:
+  ports:
+  - port: 3306
+  selector:
+    app: mysql
+  clusterIP: None
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
   name: mysql
-  labels:
-    "heptio.com/example": lamp
 spec:
-  replicas: 1
-  revisionHistoryLimit: 5
   selector:
     matchLabels:
       app: mysql
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
         app: mysql
     spec:
       containers:
-      - image: mysql
+      - image: mysql:5.6
         name: mysql
-        resources:
-          requests:
-            cpu: 1
-            memory: 2Gi
         env:
-          - name: MYSQL_ROOT_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: mysql-credentials
-                key: rootpw
-          - name: MYSQL_USER
-            valueFrom:
-              secretKeyRef:
-                name: mysql-credentials
-                key: user
-          - name: MYSQL_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: mysql-credentials
-                key: password
-          - name: MYSQL_DATABASE
-            value: sakila
-        livenessProbe:
-          tcpSocket:
-            port: 3306
+          # Use secret in real usage
+        - name: MYSQL_ROOT_PASSWORD
+          value: password
         ports:
         - containerPort: 3306
+          name: mysql
         volumeMounts:
-        - mountPath: /var/lib/mysql
-          subPath: data
-          name: database
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql
       volumes:
-      - name: database
+      - name: mysql-persistent-storage
         persistentVolumeClaim:
-          claimName: database
-
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: mysql
-  labels:
-    "heptio.com/example": lamp
-spec:
-  type: ClusterIP
-  ports:
-  - port: 3306
-    protocol: TCP
-  selector:
-    app: mysql
+          claimName: mysql-pv-claim

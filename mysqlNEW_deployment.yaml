@@ -1,3 +1,0 @@
-kubectl create -f https://k8s.io/examples/application/mysql/mysql-pv.yaml
-kubectl create -f https://k8s.io/examples/application/mysql/mysql-deployment.yaml
-

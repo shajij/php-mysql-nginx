@@ -6,16 +6,16 @@ spec:
   tls:
   - hosts:
     - my.test.com
-#    secretName: cafe-secret
+    secretName: ingress-secret
   rules:
   - host: my.test.com
     http:
       paths:
-      - path: /tea
+      - path: /app1
         backend:
           serviceName: nginx
           servicePort: 80
-      - path: /coffee
+      - path: /app2
         backend:
           serviceName: nginx2
           servicePort: 80

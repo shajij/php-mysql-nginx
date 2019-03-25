@@ -4,7 +4,7 @@
 1. folder /data/code and /data/code2
 2. PHP index.php copied to the above folders
 
-**Apply the Yalm's in the following order**
+**Apply the Yaml's in the following order**
 
  1. nginx_configMap.yaml
  2. nginx_deployment.yaml
@@ -42,7 +42,7 @@ this creates your ingress controller, next apply ingress.yaml for the ingress
 
 ## Testing
 
-    kubect get svc -o wide
+    kubectl get svc -o wide
 Pick the IP Address
 
     IC_IP=10.102.250.242
@@ -61,4 +61,4 @@ Now you can use the above image in your php_deployment.yaml file
 
 ## Known Issues
 
-More testing underway
+More testing underway for app2 and php slowness to retrieve data from mysql

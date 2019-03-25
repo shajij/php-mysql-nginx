@@ -1,4 +1,4 @@
- # php-nginx-mysql
+# php-nginx-mysql
 
 **Prerequisite**
 1. folder /data/code and /data/code2
@@ -12,8 +12,9 @@
  4. php_deployment.yaml
  5. mysql_deployment.yaml
  6. ingress controller
- 7. ingress_secret.yaml
+ 7. ingress_secret.yaml (details below)
  8. ingress.yaml
+ 9. Test app1 and app2
 
 # Ingress Controller deployment
 
@@ -25,7 +26,7 @@
     kubectl apply -f rbac/rbac.yaml
     kubectl apply -f deployment/nginx-ingress.yaml
     
-this creates your ingress    
+this creates your ingress controller, next apply ingress.yaml for the ingress   
 ## Database mysql
   you will need a DB called myDB and myDB2 with data for the code to work, run the following client and create the DB
   
@@ -47,3 +48,17 @@ Pick the IP Address
     IC_IP=10.102.250.242
     IC_HTTPS_PORT=443
     curl --resolve my.test.com:$IC_HTTPS_PORT:$IC_IP https://my.test.com:$IC_HTTPS_PORT/app1 --insecure
+
+
+## php-fpm custom image
+
+Under phpbuild-fpm folder you will find the Dockerfile, follow the steps to build and push to your repo
+
+    docker build .
+    docker tag <Image ID> sjmax/php-7.1-fpm
+    docker push sjmax/php-7.1-fpm
+Now you can use the above image in your php_deployment.yaml file
+
+## Known Issues
+
+More testing underway

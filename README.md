@@ -1,4 +1,4 @@
- php-nginx-mysql
+ #php-nginx-mysql
 
 **Prerequisite**
 1. folder /data/code and /data/code2

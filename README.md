@@ -11,8 +11,8 @@
  3. Build docker file and push to repo or use mine
  4. php_deployment.yaml
  5. mysql_deployment.yaml
- 6. ingress controller
- 7. ingress_secret.yaml (details below)
+ 6. ingress controller (details below)
+ 7. ingress_secret.yaml 
  8. ingress.yaml
  9. Test app1 and app2
 

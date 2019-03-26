@@ -62,3 +62,9 @@ Now you can use the above image in your php_deployment.yaml file
 ## Known Issues
 
 More testing underway for app2 and php slowness to retrieve data from mysql
+
+## References
+
+https://github.com/nginxinc/kubernetes-ingress
+https://hackernoon.com/setting-up-nginx-ingress-on-kubernetes-2b733d8d2f45
+https://kubernetes.io/docs/concepts/services-networking/ingress/

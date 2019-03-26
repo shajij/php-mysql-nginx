@@ -67,11 +67,10 @@ More testing underway
 
 ## References
 
-https://github.com/nginxinc/kubernetes-ingress
-https://hackernoon.com/setting-up-nginx-ingress-on-kubernetes-2b733d8d2f45
-https://kubernetes.io/docs/concepts/services-networking/ingress/
-https://www.w3schools.com/php/php_mysql_connect.asp
-https://secure.php.net/manual/en/mysqli.installation.php
-https://github.com/docker-library/repo-info/tree/master/repos/php/local
-
+[https://github.com/nginxinc/kubernetes-ingress](https://github.com/nginxinc/kubernetes-ingress)
+[https://hackernoon.com/setting-up-nginx-ingress-on-kubernetes-2b733d8d2f45](https://hackernoon.com/setting-up-nginx-ingress-on-kubernetes-2b733d8d2f45)
+[https://kubernetes.io/docs/concepts/services-networking/ingress/](https://kubernetes.io/docs/concepts/services-networking/ingress/)
+[https://www.w3schools.com/php/php_mysql_connect.asp](https://www.w3schools.com/php/php_mysql_connect.asp)
+[https://secure.php.net/manual/en/mysqli.installation.php](https://secure.php.net/manual/en/mysqli.installation.php)
+[https://github.com/docker-library/repo-info/tree/master/repos/php/local](https://github.com/docker-library/repo-info/tree/master/repos/php/local)
 

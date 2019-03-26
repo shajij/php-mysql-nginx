@@ -26,6 +26,7 @@
     kubectl apply -f rbac/rbac.yaml
     kubectl apply -f common/default-server-secret.yaml
     kubectl apply -f deployment/nginx-ingress.yaml
+    kubectl create -f service/nodeport.yaml
     
 this creates your ingress controller, next apply ingress.yaml for the ingress   
 ## Database mysql
@@ -62,14 +63,15 @@ Now you can use the above image in your php_deployment.yaml file
 
 ## Known Issues
 
-More testing underway for app2 and php slowness to retrieve data from mysql
+More testing underway
 
 ## References
 
-https://github.com/nginxinc/kubernetes-ingress/blob/master/docs/installation.md
 https://github.com/nginxinc/kubernetes-ingress
 https://hackernoon.com/setting-up-nginx-ingress-on-kubernetes-2b733d8d2f45
 https://kubernetes.io/docs/concepts/services-networking/ingress/
 https://www.w3schools.com/php/php_mysql_connect.asp
 https://secure.php.net/manual/en/mysqli.installation.php
 https://github.com/docker-library/repo-info/tree/master/repos/php/local
+
+

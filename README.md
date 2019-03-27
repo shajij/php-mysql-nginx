@@ -2,7 +2,7 @@
 
 **Prerequisite**
 1. folder /data/code and /data/code2
-2. PHP index.php copied to the above folders
+2. PHP index.php copied to the above folders from the repo
 
 **Apply the Yaml's in the following order**
 
@@ -14,7 +14,10 @@
  6. ingress controller (details below)
  7. ingress_secret.yaml 
  8. ingress.yaml
- 9. Test app1 and app2
+ 9. nginx2_configMap.yaml
+ 10. nginx2_deployment.yaml
+ 11. php2_deployment.yaml
+ 12. Test app1 and app2
 
 # Ingress Controller deployment
 
@@ -35,17 +38,22 @@ this creates your ingress controller, next apply ingress.yaml for the ingress
 
     kubectl run -it --rm --image=mysql:5.6 --restart=Never mysql-client -- mysql -h mysql -ppassword
     CREATE DATABASE myDB;
-    USER myDB;
-    CREATE TABLE people (name VARCHAR(20), place VARCHAR(20);
+    USE myDB;
+    CREATE TABLE people (name VARCHAR(20), place VARCHAR(20));
     INSERT INTO people VALUES ('SJ', 'PA');
     INSERT INTO people VALUES ('MJ', 'VA');
- 
     
+    CREATE DATABASE myDB2;
+    USE myDB2;`
+    CREATE TABLE places (name VARCHAR(20), zip VARCHAR(20));
+    INSERT INTO places VALUES ('PA', '19703');
+    INSERT INTO places VALUES ('VA', '17831');
+
 
 ## Testing
 
-    kubectl get svc -o wide
-Pick the IP Address
+    kubectl get svc -o wide --all-namespaces
+Pick the IP Address of the nginx-ingress
 
     IC_IP=10.102.250.242
     IC_HTTPS_PORT=443
@@ -73,4 +81,3 @@ More testing underway
 [https://www.w3schools.com/php/php_mysql_connect.asp](https://www.w3schools.com/php/php_mysql_connect.asp)
 [https://secure.php.net/manual/en/mysqli.installation.php](https://secure.php.net/manual/en/mysqli.installation.php)
 [https://github.com/docker-library/repo-info/tree/master/repos/php/local](https://github.com/docker-library/repo-info/tree/master/repos/php/local)
-

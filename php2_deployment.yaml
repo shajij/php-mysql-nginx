@@ -10,8 +10,7 @@ spec:
     tier: backend
   ports:
   - protocol: TCP
-    port: 9001
-    targetPort: 9000
+    port: 9000
 ---
 apiVersion: apps/v1
 kind: Deployment

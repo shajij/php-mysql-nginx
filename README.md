@@ -1,12 +1,12 @@
 # php-nginx-mysql
 
-```mermaid
+'''mermaid
 graph LR
 A[nginx ingress] -- app1 --> B((nginx app1 svc))
 A -- app2 --> C((nginx app2 svc))
 B --> D{mysql myDB,myDB2}
 C --> D
-```
+'''
 
 **Prerequisite**
 1. folder /data/code and /data/code2

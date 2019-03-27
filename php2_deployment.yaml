@@ -37,7 +37,8 @@ spec:
           claimName: code2
       containers:
       - name: php2
-        image: php:7-fpm
+#        image: php:7-fpm
+        image: sjmax/php-7.1-fpm
         volumeMounts:
         - name: code2
           mountPath: /code2

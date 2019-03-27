@@ -10,7 +10,7 @@ spec:
     tier: backend
   ports:
   - protocol: TCP
-    port: 81
+    port: 80
     targetPort: 80
 #  externalIPs:
 #  - 10.120.121.45

@@ -1,12 +1,7 @@
 # php-nginx-mysql
 
-'''mermaid
-graph LR
-A[nginx ingress] -- app1 --> B((nginx app1 svc))
-A -- app2 --> C((nginx app2 svc))
-B --> D{mysql myDB,myDB2}
-C --> D
-'''
+**Architecture**
+nginx ingress sends traffic to nginx container and the /app1 pulls up an index.php file running in php container which inturn connects to the mysql DB and pulls data
 
 **Prerequisite**
 1. folder /data/code and /data/code2

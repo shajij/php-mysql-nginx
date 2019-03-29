@@ -1,7 +1,7 @@
 # php-nginx-mysql
 
 **Architecture**
-nginx ingress sends traffic to nginx container and the /app1 pulls up an index.php file running in php container which inturn connects to the mysql DB and pulls data
+nginx ingress sends traffic to nginx container and the /app1 or /app2 pulls up an index.php file running in php container which inturn connects to the mysql DB and pulls data
 
 **Prerequisite**
 1. folder /data/code and /data/code2
@@ -11,7 +11,7 @@ nginx ingress sends traffic to nginx container and the /app1 pulls up an index.p
 
  1. nginx_configMap.yaml
  2. nginx_deployment.yaml
- 3. Build docker file and push to repo or use mine
+ 3. Build docker file under phpbuild-fpm folder and push to repo or use mine 
  4. php_deployment.yaml
  5. mysql_deployment.yaml
  6. ingress controller (details below)
